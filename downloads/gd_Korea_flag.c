@@ -356,4 +356,3 @@ if (outputFile == NULL) {
       fclose(outputFile);
       gdImageDestroy(im);
       return 0;
-  }
