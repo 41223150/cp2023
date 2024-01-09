@@ -1,6 +1,64 @@
 <h1>About</h1>
 <p>個人倉儲:<a href="https://github.com/41223150/cp2023">https://github.com/41223150/cp2023</a></p>
-<h1>w4-5</h1><h1>W2-3</h1>
+<h1>W15</h1>
+<h2>第一步驟</h2>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_roc_flag(gdImagePtr img);
+
+int main() {
+    int width = 1200;
+    int height = (int)(width * 2.0 / 3.0);
+
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+
+    draw_roc_flag(img);
+
+    FILE *outputFile = fopen("roc_flag.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        return 1;
+    }
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}
+
+void draw_roc_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, white, blue;
+    int center_x = (int)(width / 4);
+    int center_y = (int)(height / 4);
+
+    red = gdImageColorAllocate(img, 255, 0, 0);
+    white = gdImageColorAllocate(img, 255, 255, 255);
+    blue = gdImageColorAllocate(img, 0, 0, 149);
+
+    gdImageFilledRectangle(img, 0, 0, width, height, red);
+    gdImageFilledRectangle(img, 0, 0, (int)(width / 2.0), (int)(height / 2.0), blue);
+
+    int A_x = 429;
+    int A_y = 125;
+    int B_x = 279;
+    int B_y = 165;
+    int E_x = 170;
+    int E_y = 274;
+    int D_x = 319;
+    int D_y = 234;
+
+    gdImageLine(img, A_x, A_y, B_x, B_y, white);
+    gdImageLine(img, B_x, B_y, E_x, E_y, white);
+    gdImageLine(img, E_x, E_y, D_x, D_y, white);
+    gdImageLine(img, D_x, D_y, A_x, A_y, white);
+}
+</pre>
+<p><img alt="" height="400" src="/images/roc_flag.png" width="599"/></p><h1>w4-5</h1>
+<p></p><h1>W2-3</h1>
 <p><a href="https://nfuedu-my.sharepoint.com/personal/yen_nfu_edu_tw/_layouts/15/stream.aspx?id=%2Fpersonal%2Fyen%5Fnfu%5Fedu%5Ftw%2FDocuments%2F2023%2Fcp2023%2Fmp4%2Fcp2023%5Fa%5Fw2%5F1%2Emp4&amp;nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&amp;ga=1&amp;referrer=StreamWebApp%2EWeb&amp;referrerScenario=AddressBarCopied%2Eview">說明安裝 Apps, 如何設定網路, 查驗是否正確連網</a></p>
 <p><span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">2023/09/26 在 1a w3 課程進行到建立各練習地點作業時發現，將 Replit 導入 Github 錢包的流程中，所產生的系統間權限設置，必須由 Github 課堂管理帳號（以 cp2023 為例，附屬在mdecp2023 帳戶下），針對各使用者所提出的個別Replit 權限請求（以site-scrum-1 憑證為例，只能穿透Replit 提出控管mdecp2023/site-scrum-1 憑證的權限）逐一進行</span></span> </span><span style="background-color: #ffff00;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">設定</span></span></span><span><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">。</span></span></span></p>
 <p><img alt="" height="400" src="https://mde.tw/cpnote/images/mdecp2023_replit_requests.png" width="516"/></p>
